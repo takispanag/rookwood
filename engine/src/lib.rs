@@ -1,8 +1,8 @@
 //! Rookwood — a chess engine written from scratch.
 //!
 //! This crate implements the board representation, attack generation, move
-//! legality, FEN, the game rules and the evaluation directly. It has no
-//! dependency on any other chess library.
+//! legality, FEN, the game rules, the evaluation and the search directly. It
+//! has no dependency on any other chess library.
 //!
 //! | Module | Responsibility |
 //! |---|---|
@@ -14,6 +14,7 @@
 //! | [`movegen`] | pseudo-legal generation and legality filtering |
 //! | [`game`] | move history and draw rules |
 //! | [`eval`] | material and piece-square evaluation |
+//! | [`search`] | alpha-beta and quiescence |
 //! | [`perft`] | move generator validation |
 //! | [`zobrist`] | position keys |
 
@@ -25,10 +26,12 @@ pub mod movegen;
 pub mod moves;
 pub mod perft;
 pub mod position;
+pub mod search;
 pub mod types;
 pub mod zobrist;
 
 pub use game::{DrawReason, Game, GameStatus};
 pub use moves::{Move, MoveFlag, MoveList};
 pub use position::{CastlingRights, FenError, Position, STARTPOS_FEN};
+pub use search::{SearchLimits, SearchResult};
 pub use types::{Color, Piece, PieceType, Square};
