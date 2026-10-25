@@ -1,0 +1,28 @@
+[workspace]
+resolver = "3"
+members = ["engine"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.95"
+license = "MIT"
+authors = ["Takis Panagiotopoulos"]
+repository = "https://github.com/takispanag/rookwood"
+homepage = "https://github.com/takispanag/rookwood"
+description = "A chess engine, UCI front end and analysis board written from scratch in Rust."
+
+[workspace.dependencies]
+rookwood = { path = "engine", version = "0.1.0" }
+
+# Engine performance matters far more than compile time.
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+debug = false
+
+# `cargo test --release` should still be fast, but keep debug assertions on
+# for the debug profile so invariant checks stay active during development.
+[profile.dev]
+opt-level = 1

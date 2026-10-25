@@ -1,0 +1,15 @@
+[package]
+name = "rookwood"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+description = "Core chess rules, evaluation and search for Rookwood. No third-party dependencies."
+keywords = ["chess", "engine", "uci", "bitboard"]
+categories = ["game-engines"]
+
+# The engine crate is deliberately dependency free: rules, evaluation, search
+# and the UCI protocol are all implemented here.
+[dependencies]
