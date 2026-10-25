@@ -1,0 +1,23 @@
+[package]
+name = "rookwood-gui"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+description = "Desktop analysis board for the Rookwood chess engine."
+publish = false
+
+[[bin]]
+name = "rookwood"
+path = "src/main.rs"
+
+[dependencies]
+rookwood = { workspace = true }
+eframe = { version = "0.37", default-features = false, features = [
+    "default_fonts",
+    "glow",
+    "wayland",
+    "x11",
+] }
