@@ -5,6 +5,7 @@
 //!
 //! The modules are introduced in dependency order as the engine grows.
 
+pub mod attacks;
 pub mod bitboard;
 pub mod types;
 
