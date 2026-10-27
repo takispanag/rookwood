@@ -7,8 +7,10 @@
 
 pub mod attacks;
 pub mod bitboard;
+pub mod moves;
 pub mod types;
 
+pub use moves::{Move, MoveFlag, MoveList};
 pub use types::{Color, Piece, PieceType, Square};
 
 /// Engine name reported over UCI and shown in the GUI.
