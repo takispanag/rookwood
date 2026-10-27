@@ -9,6 +9,7 @@ pub mod attacks;
 pub mod bitboard;
 pub mod moves;
 pub mod types;
+pub mod zobrist;
 
 pub use moves::{Move, MoveFlag, MoveList};
 pub use types::{Color, Piece, PieceType, Square};
