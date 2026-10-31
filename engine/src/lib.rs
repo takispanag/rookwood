@@ -10,6 +10,7 @@ pub mod bitboard;
 pub mod game;
 pub mod movegen;
 pub mod moves;
+pub mod perft;
 pub mod position;
 pub mod types;
 pub mod zobrist;
