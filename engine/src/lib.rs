@@ -7,6 +7,7 @@
 
 pub mod attacks;
 pub mod bitboard;
+pub mod eval;
 pub mod game;
 pub mod movegen;
 pub mod moves;
