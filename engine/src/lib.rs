@@ -13,12 +13,14 @@ pub mod movegen;
 pub mod moves;
 pub mod perft;
 pub mod position;
+pub mod search;
 pub mod types;
 pub mod zobrist;
 
 pub use game::{DrawReason, Game, GameStatus};
 pub use moves::{Move, MoveFlag, MoveList};
 pub use position::{CastlingRights, FenError, Position, STARTPOS_FEN};
+pub use search::{SearchLimits, SearchResult};
 pub use types::{Color, Piece, PieceType, Square};
 
 /// Engine name reported over UCI and shown in the GUI.
