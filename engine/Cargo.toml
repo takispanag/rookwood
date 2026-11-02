@@ -13,3 +13,8 @@ categories = ["game-engines"]
 # The engine crate is deliberately dependency free: rules, evaluation, search
 # and the UCI protocol are all implemented here.
 [dependencies]
+
+[[bin]]
+name = "rookwood-uci"
+path = "src/bin/uci.rs"
+doc = false
