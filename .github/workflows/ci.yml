@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  test:
+    name: test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache build artefacts
+        uses: Swatinem/rust-cache@v2
+
+      - name: Build the engine
+        run: cargo build --release -p rookwood
+
+      - name: Run the tests
+        run: cargo test -p rookwood
+
+      - name: Check formatting
+        run: cargo fmt --all -- --check
+
+  gui:
+    name: build the desktop board
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install GUI build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libxkbcommon-dev libwayland-dev libx11-dev libxcursor-dev libxi-dev libxrandr-dev libgl1-mesa-dev
+
+      - name: Build
+        run: cargo build --release -p rookwood-gui
+
+      - name: Test the board widget
+        run: cargo test -p rookwood-gui
